@@ -1,3 +1,3 @@
 FROM wordpress
 
-EXPOSE 8000
+EXPOSE 80
