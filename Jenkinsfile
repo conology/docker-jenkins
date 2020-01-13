@@ -1,10 +1,3 @@
-pipeline {
-    agent {
-        dockerfile {
-            filename "Dockerfile.CLI"
-            label "windows"
-        }
-    }
 node {
 
     stage('Clone repository') {
@@ -39,5 +32,4 @@ node {
             app.push("latest")
         }
     }
-   } 
 }
