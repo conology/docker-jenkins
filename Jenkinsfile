@@ -13,9 +13,7 @@ pipeline {
       }
     }
     stage('Build image') {
-      steps{
         app = docker.build("my-image:${env.BUILD_ID}")
-      }
     } 
   } 
 }
