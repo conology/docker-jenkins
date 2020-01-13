@@ -10,7 +10,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build(.)
+        app = docker.image('mysql:5').withRun('-p 8000:8000')
     }
 
     stage('Test image') {
