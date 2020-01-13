@@ -10,8 +10,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("km3pipe:${env.BUILD_ID}",
-"-f ${dockerfile} .")
+        app = docker.build("simmarn/emma2html:win -f docker-windows/Dockerfile .")
     }
 
     stage('Test image') {
