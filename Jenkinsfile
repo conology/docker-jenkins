@@ -1,13 +1,11 @@
-pipeline {
-    agent {
-        dockerfile true
+node {  
+    stage('Build') { 
+        // 
     }
-
-    stages {
-        stage('Test') {
-            steps {
-                echo 'Hello World!'
-            }
-        }
+    stage('Test') { 
+        // 
+    }
+    stage('Deploy') { 
+        // 
     }
 }
