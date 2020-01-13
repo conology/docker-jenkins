@@ -1,8 +1,8 @@
 pipeline {
   agent {
     docker {
-      label 'windows'
-      image 'mcr.microsoft.com/powershell'
+      label 'linux'
+      image 'python'
     }
   }
   stages {
