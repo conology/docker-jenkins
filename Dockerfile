@@ -1,2 +1,3 @@
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
+FROM node:7-alpine
+
+RUN apk add -U subversion
