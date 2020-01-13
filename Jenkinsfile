@@ -1,6 +1,12 @@
 node {
     def app
-
+pipeline {
+    agent {
+        dockerfile {
+            filename "Dockerfile.CLI"
+            label "windows"
+        }
+    }
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
@@ -33,4 +39,5 @@ node {
             app.push("latest")
         }
     }
+   } 
 }
