@@ -1,2 +1,2 @@
 # docker-jenkins
-Wordpress with jenkins and docker
+Wordpress with Jenkins and Docker
