@@ -11,7 +11,7 @@ node {
          * docker build on the command line */
 
         app = docker.build("km3pipe:${env.BUILD_ID}",
-                               "-f ${DOCKER_FILES_DIR}/${dockerfile} ${DOCKER_FILES_DIR}")
+"-f ${dockerfile} .")
     }
 
     stage('Test image') {
