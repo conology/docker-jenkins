@@ -1,5 +1,7 @@
-FROM alpine:3.4
+FROM wordpress
 
-RUN apk update
-RUN apk add vim
-RUN apk add curl
+RUN npm install
+
+EXPOSE 8000
+
+CMD [ "npm", "start" ]
