@@ -1,4 +1,6 @@
 node {
-    checkout scm
-    def customImage = docker.build("my-image:${env.BUILD_ID}")
+    stage 'Checkout'
+        checkout scm
+    stage 'Build & UnitTest'
+        sh "docker build -t accountownerapp:B${BUILD_NUMBER} -f Dockerfile ."
 }
