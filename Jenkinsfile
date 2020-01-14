@@ -1,6 +1,12 @@
 node {
+    def customImage
     stage 'Checkout'
         checkout scm
-    stage 'Build & UnitTest'
-        def customImage = docker.build("my-image:${env.BUILD_ID}")
+    stage 'Build'
+        customImage = docker.build("my-image:${env.BUILD_ID}")
+    stage('Test') {
+		customImage.inside {
+			sh 'npm test'
+		}
+	}
 }
