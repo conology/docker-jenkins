@@ -1,14 +1,15 @@
-node {
-    def customImage
-    stage ('Checkout'){
-        checkout scm
+pipeline {
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v $HOME/.m2:/root/.m2'
+        }
     }
-    stage ('Build'){
-        customImage = docker.build("my-image:${env.BUILD_ID}")
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -B'
+            }
+        }
     }
-    stage('Test') {
-		customImage.inside {
-			sh 'npm test'
-		}
-	}
 }
