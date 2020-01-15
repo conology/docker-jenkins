@@ -1,0 +1,23 @@
+#customize-controls .control-section-multipurpose-ecommerce .accordion-section-title:hover,
+#customize-controls .control-section-multipurpose-ecommerce .accordion-section-title:focus {
+	background-color: #fff;
+}
+
+.control-section-multipurpose-ecommerce .accordion-section-title .button {
+	margin-top:  -4px;
+	font-weight: 400;
+	margin-left: 8px;
+}
+
+.rtl .control-section-multipurpose-ecommerce .accordion-section-title .button {
+	margin-left:  0;
+	margin-right: 8px;
+}
+
+/* ---------Excerpt & Logo --------- */
+input#_customize-input-multipurpose_ecommerce_excerpt_number,
+input#_customize-input-multipurpose_ecommerce_slider_excerpt_number,
+input#_customize-input-multipurpose_ecommerce_slider_opacity_color {
+    width: 100%;
+}
+
