@@ -7,6 +7,6 @@ node {
         /* 
         customImage = docker.build("my-image:${env.BUILD_ID}")
         */
-        bat 'echo %CD%'
+        bat 'docker-composer up'
     }
 }
