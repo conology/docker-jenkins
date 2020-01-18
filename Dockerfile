@@ -7,3 +7,4 @@ FROM wordpress
 ADD ./multipurpose-ecommerce /usr/src/wordpress/wp-content/themes/multipurpose-ecommerce
 
 ADD ./elementor /usr/src/wordpress/wp-content/plugins/elementor
+ADD ./talentlms /usr/src/wordpress/wp-content/plugins/talentlms
