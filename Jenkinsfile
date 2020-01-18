@@ -7,7 +7,7 @@ node {
         /* 
         customImage = docker.build("my-image:${env.BUILD_ID}")
         */
-        bat 'wget --help'
+        bat 'jar xf talentlms.zip'
         
         
         /*
