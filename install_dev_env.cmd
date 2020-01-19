@@ -19,3 +19,7 @@ docker container run --name jenkins-blueocean --rm --detach ^
   --volume jenkins-data:/var/jenkins_home ^
   --volume jenkins-docker-certs:/certs/client:ro ^
   --publish 1000:8080 --publish 50000:50000 jenkinsci/blueocean
+  
+# install docker-compose
+docker exec -u root -it jenkins-blueocean curl -L --fail https://github.com/docker/compose/releases/download/1.25.0/run.sh -o /usr/local/bin/docker-compose
+docker exec -u root -it jenkins-blueocean chmod 775 /usr/local/bin/docker-compose
