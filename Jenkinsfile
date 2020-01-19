@@ -11,8 +11,12 @@ node {
     stage ('Deploy') {
         
         sh 'echo Deploying Env'
-        /*sh 'docker-compose up -d --build'*/
-        sh 'docker-compose up -d --tlsverify --tlscacert ca.pem --tlscert cert.pem --tlskey key.pem --build'
+        /*sh 'docker-compose up -d --build
+        sh 'docker-compose up -d --tlsverify --tlscacert ca.pem --tlscert cert.pem --tlskey key.pem --build' */
+        
+        // copy git files to the build slave & execute docker compose
+        sh 'docker cp *.* jenkins-docker:usr'
+        sh 'docker exec -it jenkins-docker sh docker-compose up -d --build
         
     }
     stage ('Configure') {
