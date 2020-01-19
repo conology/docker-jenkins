@@ -16,6 +16,8 @@ node {
         
         // copy git files to the build slave & execute docker compose
         sh 'docker ps'
+        sh 'docker images'
+        sh 'ls'
         sh 'docker cp ./. jenkins-docker:usr'
         sh 'docker exec -it jenkins-docker sh /usr/docker-compose up -d --build'
         
