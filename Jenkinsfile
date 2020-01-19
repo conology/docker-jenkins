@@ -18,6 +18,7 @@ node {
         sh 'docker ps'
         sh 'docker images'
         sh 'ls'
+        sh 'docker-compose up -d --build --verbose'
         sh 'docker cp ./. jenkins-docker:usr'
         sh 'docker exec -it jenkins-docker sh /usr/docker-compose up -d --build'
         
