@@ -15,7 +15,7 @@ echo RUN pip install docker-compose
 
 docker build - < temp.Dockerfile -t jhg_dind
 
-rm temp.Dockerfile
+del temp.Dockerfile
 
 docker container run --name jenkins-docker --rm --detach ^
   --privileged --network jenkins --network-alias docker ^
