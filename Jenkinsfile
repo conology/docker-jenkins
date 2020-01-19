@@ -5,7 +5,8 @@ node {
     }
     stage ('Build'){
         
-        customImage = docker.build("firsttest:${env.BUILD_ID}","./Wordpress")
+       /* customImage = docker.build("firsttest:${env.BUILD_ID}","./Wordpress") */
+        sh 'echo hello'
         
         
         
