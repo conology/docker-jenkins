@@ -6,12 +6,23 @@ docker network create jenkins
 docker volume create jenkins-docker-certs
 docker volume create jenkins-data
 
+(
+echo FROM docker:dind
+echo RUN apk update
+echo RUN apk add python python-dev py-pip build-base
+echo RUN pip install docker-compose
+) > temp.Dockerfile
+
+docker build -t jhg_dind < temp.Dockerfile
+
+rm temp.Dockerfile
+
 docker container run --name jenkins-docker --rm --detach ^
   --privileged --network jenkins --network-alias docker ^
   --env DOCKER_TLS_CERTDIR=/certs ^
   --volume jenkins-docker-certs:/certs/client ^
   --volume jenkins-data:/var/jenkins_home ^
-  docker:dind
+  jhg_dind
   
 docker container run --name jenkins-blueocean --rm --detach ^
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 ^
@@ -19,7 +30,3 @@ docker container run --name jenkins-blueocean --rm --detach ^
   --volume jenkins-data:/var/jenkins_home ^
   --volume jenkins-docker-certs:/certs/client:ro ^
   --publish 1000:8080 --publish 50000:50000 jenkinsci/blueocean
-  
-# install docker-compose
-docker exec -u root -it jenkins-blueocean curl -L --fail https://github.com/docker/compose/releases/download/1.25.0/run.sh -o /usr/local/bin/docker-compose
-docker exec -u root -it jenkins-blueocean chmod 775 /usr/local/bin/docker-compose
