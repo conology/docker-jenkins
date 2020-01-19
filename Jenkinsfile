@@ -11,7 +11,8 @@ node {
     stage ('Deploy') {
         
         sh 'echo Deploying Env'
-        sh 'docker-compose up -d --build'
+        /*sh 'docker-compose up -d --build'*/
+        sh 'docker-compose up -d --tlsverify --tlscacert ca.pem --tlscert cert.pem --tlskey key.pem --build'
         
     }
     stage ('Configure') {
