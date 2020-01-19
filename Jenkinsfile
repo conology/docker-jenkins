@@ -2,7 +2,7 @@ node {
     def customImage
     
     environment {
-        DOCKER_CERT_PATH = '/certs/client'
+        DOCKER_CERT_PATH = '/certs/client/xxx'
         DOCKER_TLS_VERIFY = 1
     }
     
