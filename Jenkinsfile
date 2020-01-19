@@ -3,11 +3,11 @@ node {
     stage ('Checkout'){
         checkout scm
     }
-    stage ('Build'){
+    /*stage ('Build'){
         
         sh 'echo Starting build of wordpress'
         customImage = docker.build("jhg_wordpress:${env.BUILD_ID}","./Wordpress")
-    }
+    }*/
     stage ('Deploy') {
         
         sh 'echo Deploying Env'
