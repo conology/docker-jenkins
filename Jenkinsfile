@@ -1,5 +1,11 @@
 node {
     def customImage
+    
+    environment {
+        DOCKER_CERT_PATH = '/certs/client'
+        DOCKER_TLS_VERIFY = 1
+    }
+    
     stage ('Checkout'){
         checkout scm
     }
