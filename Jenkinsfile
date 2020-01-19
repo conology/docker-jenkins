@@ -6,7 +6,7 @@ node {
     stage ('Build'){
         
         sh 'echo Starting build of wordpress'
-        customImage = docker.build("JHG_wordpress:${env.BUILD_ID}","./Wordpress")
+        customImage = docker.build("jhg_wordpress:${env.BUILD_ID}","./Wordpress")
     }
     stage ('Deploy') {
         
@@ -16,7 +16,7 @@ node {
     }
     stage ('Configure') {
         
-        sh 'docker exec -it jenkins-docker docker exec -it JHG_wordpress wp plugin install yada-wiki'
+        sh 'docker exec -it jenkins-docker docker exec -it jhg_wordpress wp plugin install yada-wiki'
         
     }
 }
