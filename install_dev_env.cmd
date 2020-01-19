@@ -9,11 +9,11 @@ docker volume create jenkins-data
 (
 echo FROM docker:dind
 echo RUN apk update
-echo RUN apk add python python-dev py-pip build-base
+echo RUN apk add python python-dev py-pip build-base libffi-dev openssl-dev gcc libc-dev make
 echo RUN pip install docker-compose
 ) > temp.Dockerfile
 
-docker build -t jhg_dind < temp.Dockerfile
+docker build - < temp.Dockerfile -t jhg_dind
 
 rm temp.Dockerfile
 
