@@ -18,7 +18,7 @@ node {
         sh 'docker ps'
         sh 'docker images'
         sh 'ls -l'
-        sh 'docker-compose'
+        //sh 'docker-compose'
         sh 'docker-compose up'
         sh 'docker-compose up -d'
         sh 'docker-compose up -d --build'
