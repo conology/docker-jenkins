@@ -9,7 +9,7 @@ node {
     stage ('Checkout'){
         checkout scm
     }
-    /*stage ('Build'){
+    stage ('Build'){
         
         sh 'echo Starting build of wordpress'
         customImage = docker.build("jhg_wordpress:${env.BUILD_ID}","./Wordpress")
@@ -18,7 +18,7 @@ node {
         
         sh 'echo Deploying Env'
         sh 'docker-compose up -d --build'    
-    }*/
+    }
     stage ('Configure') {
         
         sh 'docker exec -it JHG_wordpress wp plugin install yada-wiki'
