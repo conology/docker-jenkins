@@ -24,7 +24,7 @@ docker container run --name jenkins-docker --rm --detach ^
   --env DOCKER_TLS_CERTDIR=/certs ^
   --volume jenkins-docker-certs:/certs/client ^
   --volume jenkins-data:/var/jenkins_home ^
-  docker:dind
+  --publish 8080:8080 -publish 3001:3001 docker:dind
   
 docker container run --name jenkins-blueocean --rm --detach ^
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 ^
