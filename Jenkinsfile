@@ -21,7 +21,7 @@ node {
     }
     stage ('Configure') {
         
-        sh 'docker exec -it JHG_wordpress wp plugin install yada-wiki'
+        sh 'docker exec -i JHG_wordpress wp plugin install yada-wiki'
         sh 'docker exec -it JHG_wordpress wp plugin activate yada-wiki'
     }
 }
