@@ -21,7 +21,7 @@ node {
     }
     stage ('Configure') {
         
-        sh 'docker exec -i JHG_wordpress wp plugin install yada-wiki --as-root'
-        sh 'docker exec -i JHG_wordpress wp plugin activate yada-wiki --as-root'
+        sh 'docker exec -i JHG_wordpress wp plugin install yada-wiki --allow-root'
+        sh 'docker exec -i JHG_wordpress wp plugin activate yada-wiki --allow-root'
     }
 }
