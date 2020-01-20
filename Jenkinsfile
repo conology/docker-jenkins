@@ -22,6 +22,7 @@ node {
     stage ('Configure') {
         sh 'docker container ls'
         sh 'docker exec -i JHG_wordpress wp core version --allow-root'
+        sh 'docker exec -i JHG_wordpress wp plugin list --allow-root'
         sh 'docker exec -i JHG_wordpress wp plugin install talentlms --allow-root --activate'
         //sh 'docker exec -i JHG_wordpress wp plugin install yada-wiki --allow-root --activate'
         //sh 'docker exec -i JHG_wordpress wp plugin activate yada-wiki --allow-root'
