@@ -1,5 +1,4 @@
 node {
-/*
     def customImage
     
     environment {
@@ -19,13 +18,13 @@ node {
         
         sh 'echo Deploying Env'
         sh 'docker-compose up -d --build'    
-    }*/
+    }
     stage ('Configure') {
         sh 'docker container ls'
-        sh 'docker exec -i JHG_wordpress wp core version --allow-root'
-        sh 'docker exec -i JHG_wordpress wp core install --url=":\\localhost:8080" --title="Test title" --admin_user="admin" --admin_password="admin123" --admin_email="test@nowhere.com" --allow-root'
-        sh 'docker exec -i JHG_wordpress wp plugin list --allow-root'
-        sh 'docker exec -i JHG_wordpress wp plugin install talentlms --allow-root --activate'
+        //sh 'docker exec -i JHG_wordpress wp core version --allow-root'
+        //sh 'docker exec -i JHG_wordpress wp core install --url=":\\localhost:8080" --title="Test title" --admin_user="admin" --admin_password="admin123" --admin_email="test@nowhere.com" --allow-root'
+        //sh 'docker exec -i JHG_wordpress wp plugin list --allow-root'
+        //sh 'docker exec -i JHG_wordpress wp plugin install talentlms --allow-root --activate'
         //sh 'docker exec -i JHG_wordpress wp plugin install yada-wiki --allow-root --activate'
         //sh 'docker exec -i JHG_wordpress wp plugin activate yada-wiki --allow-root'
     }
