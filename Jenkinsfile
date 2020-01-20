@@ -1,17 +1,27 @@
 node {
     def customImage
+    
+    environment {
+        DOCKER_CERT_PATH = '/certs/client/xxx'
+        DOCKER_TLS_VERIFY = 1
+    }
+    
     stage ('Checkout'){
         checkout scm
     }
     stage ('Build'){
-        /* 
-        customImage = docker.build("my-image:${env.BUILD_ID}")
-        */
-
-        bat "wget --no-check-certificate https://downloads.wordpress.org/plugin/talentlms.zip"
         
-        bat 'jar xf talentlms.zip'
-
-        bat 'docker-compose up'
+        sh 'echo Starting build of wordpress'
+        customImage = docker.build("jhg_wordpress:${env.BUILD_ID}","./Wordpress")
+    }
+    stage ('Deploy') {
+        
+        sh 'echo Deploying Env'
+        sh 'docker-compose up -d --build'    
+    }
+    stage ('Configure') {
+        
+        sh 'docker exec -it JHG_wordpress wp plugin install yada-wiki'
+        sh 'docker exec -it JHG_wordpress wp plugin activate yada-wiki'
     }
 }

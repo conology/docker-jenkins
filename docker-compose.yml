@@ -1,8 +1,9 @@
-version: '3.3'
+version: '3.7'
 
 services:
    db:
      image: mysql:5.7
+     container_name: JHG_db_wordpress
      volumes:
        - db_data:/var/lib/mysql
      restart: always
@@ -11,13 +12,27 @@ services:
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: wordpress
-
-   wp:
+       
+   phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: somewordpress
+    ports:
+      - 3001:80
+       
+   wordpress:
      depends_on:
-       - db
-     build: .
+       - db 
+     build: ./Wordpress
+     container_name: JHG_wordpress
      ports:
-       - "8000:80"
+       - "8080:80"
+     restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
