@@ -7,7 +7,7 @@ node {
         DOCKER_TLS_VERIFY = 1
     }
     
-    /*stage ('Checkout'){
+    stage ('Checkout'){
         checkout scm
     }
     stage ('Build'){
@@ -19,7 +19,7 @@ node {
         
         sh 'echo Deploying Env'
         sh 'docker-compose up -d --build'    
-    }*/
+    }
     
     stage ('Configure') {
       
