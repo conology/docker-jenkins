@@ -20,6 +20,7 @@ node {
         sh 'docker-compose up -d --build'    
     }
     stage ('Configure') {
+        sh 'docker container ls'
         sh 'docker exec -i JHG_wordpress wp plugin install yada-wiki --allow-root --activate'
         sh 'docker exec -i JHG_wordpress wp plugin activate yada-wiki --allow-root'
     }
