@@ -23,7 +23,7 @@ node {
     
     stage ('Configure') {
       
-        sh 'docker exec -i JHG_wordpress sh -c "wp core install --url=http://localhost:8080/var/www/wordpress/ --title=Example --admin_user=supervisor --admin_password=strongpassword --admin_email=info@example.com --allow-root"'
+        sh 'docker exec -i JHG_wordpress sh -c "wp core install --url=http://localhost:8080 --title=Example --admin_user=supervisor --admin_password=strongpassword --admin_email=info@example.com --allow-root"'
 
         sh 'docker exec -i JHG_wordpress sh -c "wp plugin install talentlms --allow-root --activate"'
         sh 'docker exec -i JHG_wordpress sh -c "wp plugin install yada-wiki --allow-root --activate"'
