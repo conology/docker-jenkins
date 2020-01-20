@@ -30,3 +30,8 @@ Wordpress with Jenkins and Docker
 # Check the images created
 1. 'docker exec -it jenkins-docker /bin/sh
 2. 'docker images'
+
+# Next steps
+Create a seperate pipeline to deploy the images created to aws
+Tutorial on that:
+https://medium.com/@sachin34268/deploy-docker-containers-on-aws-ecs-cluster-via-jenkins-605eee0d22b0
