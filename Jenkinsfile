@@ -1,4 +1,5 @@
 node {
+/*
     def customImage
     
     environment {
@@ -18,7 +19,7 @@ node {
         
         sh 'echo Deploying Env'
         sh 'docker-compose up -d --build'    
-    }
+    }*/
     stage ('Configure') {
         sh 'docker container ls'
         sh 'docker exec -i JHG_wordpress wp core version --allow-root'
