@@ -34,8 +34,6 @@ node {
         
         //login with user
         sh 'aws configure'
-        sh 'AKIAYRDXSP32ODCOUVFY'
-        sh 'FCtCQeJHZbhw4JdAGFcXXCPmhzEbB33gC0eE/1cc'
         sh 'eu-central-1'
         sh 'json'
         
