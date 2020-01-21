@@ -11,11 +11,10 @@ docker volume create jenkins-data
 echo FROM jenkinsci/blueocean
 echo USER root
 echo RUN apk update
-echo RUN apk add python python-dev py-pip build-base libffi-dev openssl-dev gcc libc-dev make autoconf automake libtool
+echo RUN apk add python python-dev py-pip build-base libffi-dev openssl-dev gcc libc-dev make autoconf automake libtool jq
 echo RUN pip install docker-compose
 echo RUN pip install awscli
 echo RUN apk add groff
-echo RUN pip install jq
 ) > temp.Dockerfile
 
 docker build - < temp.Dockerfile -t jhg_jenkins
