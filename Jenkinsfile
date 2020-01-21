@@ -29,4 +29,9 @@ node {
         sh 'docker exec -i JHG_wordpress sh -c "wp plugin install yada-wiki --allow-root --activate"'
 
     }
+    stage('create images') {
+        // here we need to save the running & configured containers to images
+    }
+    stage('deploy AWS') {
+        // here we push the freshly created images to AWS and execute them
 }
