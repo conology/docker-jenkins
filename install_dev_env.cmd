@@ -14,6 +14,7 @@ echo RUN apk update
 echo RUN apk add python python-dev py-pip build-base libffi-dev openssl-dev gcc libc-dev make autoconf automake libtool jq
 echo RUN pip install docker-compose
 echo RUN pip install awscli
+echo RUN pip install ecscli
 echo RUN apk add groff
 ) > temp.Dockerfile
 
