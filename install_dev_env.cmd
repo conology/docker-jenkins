@@ -11,7 +11,7 @@ docker volume create jenkins-data
 echo FROM jenkinsci/blueocean
 echo USER root
 echo RUN apk update
-echo RUN apk add python python-dev py-pip build-base libffi-dev openssl-dev gcc libc-dev make
+echo RUN apk add python python-dev py-pip build-base libffi-dev openssl-dev gcc libc-dev make autoconf automake libtool
 echo RUN pip install docker-compose
 echo RUN pip install awscli
 echo RUN apk add groff
@@ -27,7 +27,7 @@ docker container run --name jenkins-docker --rm --detach ^
   --env DOCKER_TLS_CERTDIR=/certs ^
   --volume jenkins-docker-certs:/certs/client ^
   --volume jenkins-data:/var/jenkins_home ^
-  --publish 8080:8080 -publish 3001:3001 docker:dind
+  --publish 8080:8080 --publish 3001:3001 docker:dind
   
 docker container run --name jenkins-blueocean --rm --detach ^
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 ^
