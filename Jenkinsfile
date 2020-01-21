@@ -31,6 +31,22 @@ node {
     }
     stage('create images') {
         // here we need to save the running & configured containers to images
+        
+        //login with user
+        sh 'aws configure'
+        sh 'AKIAYRDXSP32ODCOUVFY'
+        sh 'FCtCQeJHZbhw4JdAGFcXXCPmhzEbB33gC0eE/1cc'
+        sh 'eu-central-1'
+        sh 'json'
+        
+        //create the AWS repository
+        sh 'aws ecr create-repository --repository-name test-repo'
+        //tag the docker image 
+        sh 'docker tag jhg_wordpress:1 586513809140.dkr.ecr.eu-central-1.amazonaws.com/test-repo'
+        //get the token from AWS
+        sh 'aws ecr get-login --no-include-email --region eu-central-1 | bash'
+        //push the image 
+        sh 'docker push 586513809140.dkr.ecr.eu-central-1.amazonaws.com/test-repo'
     }
     stage('deploy AWS') {
         // here we push the freshly created images to AWS and execute them
