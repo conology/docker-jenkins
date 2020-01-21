@@ -1,5 +1,5 @@
 node {
-    
+    /*
     def customImage
     
     environment {
@@ -20,7 +20,7 @@ node {
         sh 'echo Deploying Env'
         sh 'docker-compose up -d --build'    
     }
-    
+    */
     stage ('Configure') {
       
         sh 'docker exec -i JHG_wordpress sh -c "wp core install --url=http://localhost:8080 --title=Example --admin_user=supervisor --admin_password=strongpassword --admin_email=info@example.com --allow-root"'
