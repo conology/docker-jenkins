@@ -16,6 +16,9 @@ echo RUN pip install docker-compose
 echo RUN pip install awscli
 echo RUN pip install ecscli
 echo RUN apk add groff
+echo RUN git clone https://github.com/sobolevn/git-secret.git git-secret
+echo RUN cd git-secret && make build
+echo RUN PREFIX="/usr/local" make install
 ) > temp.Dockerfile
 
 docker build - < temp.Dockerfile -t jhg_jenkins
