@@ -31,7 +31,7 @@ node {
     }
     stage('create images') {
         // here we need to save the running & configured containers to images
-        sh 'docker commit JHG_wordpress JHG_wordpress_Cloud:${env.BUILD_ID}'
+        sh 'docker commit docker commit JHG_wordpress jhg_wordpress_cloud'
     }
     stage('upload to ECR') {
         //login with user
