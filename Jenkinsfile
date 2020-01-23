@@ -31,7 +31,9 @@ node {
     }
     stage('create images') {
         // here we need to save the running & configured containers to images
-        
+        sh 'doccker commit JHG_wordpress JHG_wordpress_Cloud:${env.BUILD_ID}'
+    }
+    stage('upload to ECR') {
         //login with user
         sh 'aws configure'
         sh 'eu-central-1'
@@ -40,7 +42,7 @@ node {
         //create the AWS repository
         sh 'aws ecr create-repository --repository-name test-repo'
         //tag the docker image 
-        sh 'docker tag jhg_wordpress:1 586513809140.dkr.ecr.eu-central-1.amazonaws.com/test-repo'
+        sh 'docker tag JHG_wordpress_Cloud 586513809140.dkr.ecr.eu-central-1.amazonaws.com/test-repo'
         //get the token from AWS
         sh 'aws ecr get-login --no-include-email --region eu-central-1 | bash'
         //push the image 
@@ -48,4 +50,6 @@ node {
     }
     stage('deploy AWS') {
         // here we push the freshly created images to AWS and execute them
+        
+        // ECS stuff in here!
 }
