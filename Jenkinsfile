@@ -52,4 +52,5 @@ node {
         // here we push the freshly created images to AWS and execute them
         
         // ECS stuff in here!
+    }
 }
