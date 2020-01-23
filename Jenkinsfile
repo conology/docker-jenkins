@@ -35,14 +35,22 @@ node {
     }
     stage('upload to ECR') {
         //login with user
-        sh 'aws configure'
-        sh 'eu-central-1'
-        sh 'json'
+        //sh 'aws configure'
+        //sh 'eu-central-1'
+        //sh 'json'
+        
+        //one time job
+        // create a jenkins-secret encrypted version of ~./aws
+        // store that version in the repo under /credentials
+        
+        //every time
+        // load these credentials and store them in the jenkins-blueocean image to have aws preconfigured
         
         //create the AWS repository
-        sh 'aws ecr create-repository --repository-name test-repo'
-        //tag the docker image 
+       // sh 'aws ecr create-repository --repository-name test-repo'
+        //tag the docker images 
         sh 'docker tag JHG_wordpress_Cloud 586513809140.dkr.ecr.eu-central-1.amazonaws.com/test-repo'
+        sh 'docker tag mysql:5.7 586513809140.dkr.ecr.eu-central-1.amazonaws.com/test-repo'
         //get the token from AWS
         sh 'aws ecr get-login --no-include-email --region eu-central-1 | bash'
         //push the image 
