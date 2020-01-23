@@ -49,8 +49,8 @@ node {
         //create the AWS repository
        // sh 'aws ecr create-repository --repository-name test-repo'
         //tag the docker images 
-        sh 'docker tag jhg_wordpress_cloud 586513809140.dkr.ecr.eu-central-1.amazonaws.com/jhg_wordpress_cloud'
-        sh 'docker tag mysql:5.7 586513809140.dkr.ecr.eu-central-1.amazonaws.com/mysql:5.7'
+        sh 'docker tag jhg_wordpress_cloud 586513809140.dkr.ecr.eu-central-1.amazonaws.com/automation/jhg_wordpress_cloud'
+        sh 'docker tag mysql:5.7 586513809140.dkr.ecr.eu-central-1.amazonaws.com/automation/mysql:5.7'
         //get the token from AWS
         sh 'aws ecr get-login --no-include-email --region eu-central-1 | bash'
         //push the image 
