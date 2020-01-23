@@ -54,8 +54,8 @@ node {
         //get the token from AWS
         sh 'aws ecr get-login --no-include-email --region eu-central-1 | bash'
         //push the image 
-        sh 'docker push 586513809140.dkr.ecr.eu-central-1.amazonaws.com/jhg_wordpress_cloud'
-        sh 'docker push 586513809140.dkr.ecr.eu-central-1.amazonaws.com/mysql:5.7'
+        sh 'docker push 586513809140.dkr.ecr.eu-central-1.amazonaws.com/automation/jhg_wordpress_cloud'
+        sh 'docker push 586513809140.dkr.ecr.eu-central-1.amazonaws.com/automation/mysql:5.7'
     }
     stage('deploy AWS') {
         // here we push the freshly created images to AWS and execute them
