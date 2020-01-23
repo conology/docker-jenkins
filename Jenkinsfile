@@ -3,8 +3,8 @@ node {
     def customImage
     
     environment {
-        DOCKER_CERT_PATH = '/certs/client/xxx'
-        DOCKER_TLS_VERIFY = 1
+        ACCESS_KEY = credentials("ACCESS_KEY")
+        SECRET_ACCESS_KEY = credentials("SECRET_ACCESS_KEY")
     }
     
     /*stage ('Checkout'){
