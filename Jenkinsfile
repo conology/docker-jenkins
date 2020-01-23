@@ -1,5 +1,5 @@
 node {
-    
+    /*
     def customImage
     
     environment {
@@ -28,5 +28,5 @@ node {
         sh 'docker exec -i JHG_wordpress sh -c "wp plugin install lifterlms --allow-root --activate"'
         sh 'docker exec -i JHG_wordpress sh -c "wp plugin install yada-wiki --allow-root --activate"'
 
-    }
+    }*/
 }
