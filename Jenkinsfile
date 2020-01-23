@@ -7,7 +7,7 @@ node {
         DOCKER_TLS_VERIFY = 1
     }
     
-    stage ('Checkout'){
+    /*stage ('Checkout'){
         checkout scm
     }
     stage ('Build'){
@@ -28,7 +28,7 @@ node {
         sh 'docker exec -i JHG_wordpress sh -c "wp plugin install talentlms --allow-root --activate"'
         sh 'docker exec -i JHG_wordpress sh -c "wp plugin install yada-wiki --allow-root --activate"'
 
-    }
+    }*/
     stage('create images') {
         // here we need to save the running & configured containers to images
         sh 'docker commit docker commit JHG_wordpress jhg_wordpress_cloud'
