@@ -1,14 +1,17 @@
 node {
     
     def customImage
-    
+    def NUM_DOCKER_IMAGES = sh 'docker info | grep Images | sed 's/[^0-9]*//g''
+    def NUM_DOCKER_CONTAINERS = sh 'docker info | grep Containers | sed 's/[^0-9]*//g''
+
     environment {
         DOCKER_CERT_PATH = '/certs/client/xxx'
         DOCKER_TLS_VERIFY = 1
     }
     
     stage ('Checkout'){
-        when (BRANCH_NAME == 'master') {
+        sh 'echo $NUM_DOCKER_IMAGES'
+        when (BRANCH_NAME != 'master') {
             checkout scm
             sh 'echo docker info'
         }
