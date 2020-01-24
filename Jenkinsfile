@@ -10,10 +10,10 @@ node {
     }
     
     stage ('Checkout'){
-        sh 'echo $NUM_DOCKER_IMAGES'
-        when (BRANCH_NAME != 'master') {
+        echo NUM_DOCKER_IMAGES
+        when (NUM_DOCKER_IMAGES == "14") {
             checkout scm
-            sh 'echo docker info'
+            sh 'echo we are in!'
         }
        
     }
