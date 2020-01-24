@@ -43,7 +43,7 @@ node {
 
     stage('upload to ECR') {
         //login with user
-        sh 'aws configure | test | pass | eu-central-1 | json'
+        sh 'aws configure;test;pass;eu-central-1;json'
         
         //create the AWS repository
         sh 'aws ecr create-repository --repository-name test-repo'
