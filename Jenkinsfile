@@ -42,8 +42,10 @@ node {
     }
 
     stage('upload to ECR') {
-        //login with user
-        sh 'aws configure;test;pass;eu-central-1;json'
+        //login with user -> replace def_acc_key and sec_key with credentials
+        sh 'aws configure set aws_access_key_id default_access_key'
+        sh 'aws configure set aws_secret_access_key default_secret_key'
+        sh 'aws configure set default.region eu-central-1'
         
         //create the AWS repository
         sh 'aws ecr create-repository --repository-name test-repo'
