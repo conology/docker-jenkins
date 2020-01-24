@@ -12,6 +12,16 @@ Wordpress with Jenkins and Docker
 8. jenkins url is 'http://localhost:1000/'
 9. hit "Start using Jenkins"
 
+# Configure Jenkins
+1. open Manage Jenkins
+2. open Configure System
+3. find Global Pipeline Libraries
+4. click add
+5. name: imperative-when def-version: master
+6. checkboxes: (top) check - (middle) uncheck - (bottom) check
+7. check Modern SCM, check Git, input Project Repo: https://github.com/comquent/Imperative-when.git
+8. click Save
+
 # Create pipeline for the docker-jenkins project
 10. klick "Open Blue Ocean" at the left bar
 11. "Create a new pipeline"
