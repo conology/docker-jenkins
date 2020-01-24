@@ -1,7 +1,7 @@
 node {
     
     def customImage
-    def NUM_DOCKER_IMAGES = sh(docker info | grep Images | sed 's/[^0-9]*//g')
+    def NUM_DOCKER_IMAGES = sh(script: 'docker info | grep Images | sed 's/[^0-9]*//g'', returnStdout: true)
     //def NUM_DOCKER_CONTAINERS = sh 'docker info | grep Containers | sed 's/[^0-9]*//g''
 
     environment {
