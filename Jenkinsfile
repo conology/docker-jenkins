@@ -2,7 +2,6 @@ node {
     
     def customImage
     def NUM_DOCKER_IMAGES = sh(script:"docker info | grep Images | sed 's/[^0-9]*//g'", returnStdout: true).trim()
-    //def NUM_DOCKER_CONTAINERS = sh 'docker info | grep Containers | sed 's/[^0-9]*//g''
 
     environment {
         DOCKER_CERT_PATH = '/certs/client/xxx'
@@ -10,36 +9,38 @@ node {
     }
     
     stage ('Checkout'){
-        echo NUM_DOCKER_IMAGES
-        when (NUM_DOCKER_IMAGES == "14") {
+        when (NUM_DOCKER_IMAGES == "0") {
             checkout scm
-            sh 'echo we are in!'
         }
-       
     }
     stage ('Build'){
-        
-        sh 'echo Starting build of wordpress'
-        customImage = docker.build("jhg_wordpress:${env.BUILD_ID}","./Wordpress")
+        when (NUM_DOCKER_IMAGES == "0") {
+            sh 'echo Starting build of wordpress'
+            customImage = docker.build("jhg_wordpress:${env.BUILD_ID}","./Wordpress")
+        }
     }
     stage ('Deploy') {
-        
-        sh 'echo Deploying Env'
-        sh 'docker-compose up -d --build'    
+        when (NUM_DOCKER_IMAGES == "0") {
+            sh 'echo Deploying Env'
+            sh 'docker-compose up -d --build'
+        }
     }
-    
     stage ('Configure') {
-        sleep 20
-        sh 'docker exec -i JHG_wordpress sh -c "wp core install --url=http://localhost:8080 --title=Example --admin_user=supervisor --admin_password=strongpassword --admin_email=info@example.com --allow-root"'
+        when (NUM_DOCKER_IMAGES == "0") {
+            sleep 20
+            sh 'docker exec -i JHG_wordpress sh -c "wp core install --url=http://localhost:8080 --title=Example --admin_user=supervisor --admin_password=strongpassword --admin_email=info@example.com --allow-root"'
 
-        sh 'docker exec -i JHG_wordpress sh -c "wp plugin install talentlms --allow-root --activate"'
-        sh 'docker exec -i JHG_wordpress sh -c "wp plugin install yada-wiki --allow-root --activate"'
-
+            sh 'docker exec -i JHG_wordpress sh -c "wp plugin install talentlms --allow-root --activate"'
+            sh 'docker exec -i JHG_wordpress sh -c "wp plugin install yada-wiki --allow-root --activate"'
+        }
     }
     stage('create images') {
-        // here we need to save the running & configured containers to images
-        sh 'docker commit docker commit JHG_wordpress jhg_wordpress_cloud'
+        when (NUM_DOCKER_IMAGES == "0") {
+            // here we need to save the running & configured containers to images
+            sh 'docker commit JHG_wordpress jhg_wordpress_cloud'
+        }
     }
+
     stage('upload to ECR') {
         //login with user
         sh 'aws configure'
