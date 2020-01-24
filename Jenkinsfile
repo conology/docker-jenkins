@@ -8,7 +8,11 @@ node {
     }
     
     stage ('Checkout'){
-        checkout scm
+        when (BRANCH_NAME != 'master') {
+            checkout scm
+            sh 'echo docker info'
+        }
+       
     }
     stage ('Build'){
         
